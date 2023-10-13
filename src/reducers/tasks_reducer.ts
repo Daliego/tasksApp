@@ -27,7 +27,8 @@ const reducer = (state: TaskState, action: Action): TaskState => {
         description: "...",
         done: false,
       };
-
+      
+      console.log(state)
       return { tasks: [new_task, ...state.tasks] };
     }
     case ActionType.Changed: {

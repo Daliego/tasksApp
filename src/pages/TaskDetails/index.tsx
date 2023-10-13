@@ -15,10 +15,9 @@ export function TaskDetails() {
   }, [id]);
 
   return (
-    <main>
-      <h2>Task Details</h2>
-
+    <main className="taskListDetails">
       <div>
+        <h2>Task Details</h2>
         <div>
           <label>ID</label>
           <p>{id}</p>

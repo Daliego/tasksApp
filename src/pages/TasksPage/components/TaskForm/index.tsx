@@ -18,8 +18,8 @@ export function TaskForm() {
     const form = (event.target as HTMLFormElement)
     form.reset()
     descriptionInputRef.current!.focus()
-
     dispatch({ type: ActionType.Added, payload: { text } })
+    console.log("aqui")
   }
 
 

@@ -6,7 +6,7 @@ import {
   TaskDispatchContext,
   TaskStateContext,
 } from "../../context/taskContext";
-
+import "../../styles/taskList/style.css";
 export interface Task {
   id: string;
   name: string;
@@ -17,9 +17,9 @@ export interface Task {
 
 export function TasksPage() {
   return (
-    <>
+    <div className="taskPage">
       <TaskForm />
       <TaskList />
-    </>
+    </div>
   );
 }
