@@ -1,13 +1,12 @@
-import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
+import {
+  BrowserRouter,
+  NavLink,
+} from "react-router-dom";
 import "./App.css";
-import { TasksPage } from "./pages/TasksPage";
-import { NotFoundPage } from "./pages/NotFoudPage";
-import { HomePage } from "./pages/HomePage";
-import { LoginPage } from "./pages/LoginPage";
-import { TaskDetails } from "./pages/TaskDetails";
 import { useReducer } from "react";
 import { taskStateReducer } from "./reducers/tasks_reducer";
 import { TaskDispatchContext, TaskStateContext } from "./context/taskContext";
+import { ElementRoutes } from "./routes/browserRoutes";
 
 function App() {
   const [state, dispatch] = useReducer(taskStateReducer, { tasks: [] });
@@ -33,16 +32,7 @@ function App() {
                 </ul>
               </nav>
             </header>
-
-            <Routes>
-              <Route Component={HomePage} path="/" />
-              <Route path="/task">
-                <Route index Component={TasksPage} />
-                <Route path=":id" Component={TaskDetails} />
-              </Route>
-              <Route Component={LoginPage} path="/login" />
-              <Route Component={NotFoundPage} path="*" />
-            </Routes>
+            <ElementRoutes />
           </BrowserRouter>
         </TaskDispatchContext.Provider>
       </TaskStateContext.Provider>

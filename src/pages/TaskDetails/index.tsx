@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { TaskStateContext } from "../../context/taskContext";
+import "../../styles/taskDetailsStyles/style.css";
 
 export function TaskDetails() {
   const { id } = useParams();
@@ -9,12 +10,30 @@ export function TaskDetails() {
 
   const task = tasks.find((task) => task.id === id);
 
-  return (
-    <div>
-      <h1>Task Details</h1>
+  useEffect(() => {
+    console.log("Task Details renderizado!");
+  }, [id]);
 
-      <p>Task ID: {id}</p>
-      <p>Task Name: {task?.name}</p>
-    </div>
+  return (
+    <main>
+      <h2>Task Details</h2>
+
+      <div>
+        <div>
+          <label>ID</label>
+          <p>{id}</p>
+        </div>
+
+        <div>
+          <label>Name</label>
+          <p> {task?.name}</p>
+        </div>
+
+        <div>
+          <label>Description</label>
+          <p> {task?.description}</p>
+        </div>
+      </div>
+    </main>
   );
 }

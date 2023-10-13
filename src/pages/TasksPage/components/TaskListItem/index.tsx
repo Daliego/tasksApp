@@ -6,8 +6,6 @@ import { ActionType } from "../../../../reducers/tasks_reducer";
 
 interface TaskListItemProps {
   task: Task;
-  // onRemove: (task: Task) => void;
-  // onSave: (task: Task) => void;
 }
 
 export function TaskListItem({ task }: TaskListItemProps) {
