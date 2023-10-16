@@ -1,6 +1,7 @@
 import { ulid } from "ulidx";
 import { Task } from "../pages/TasksPage";
-
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
 export interface TaskState {
   tasks: Task[];
 }
@@ -18,6 +19,7 @@ type TaskDeleted = { type: ActionType.Deleted; payload: { id: string } };
 export type Action = TaskAdded | TaskChanged | TaskDeleted;
 
 const reducer = (state: TaskState, action: Action): TaskState => {
+
   switch (action.type) {
     case ActionType.Added: {
       const new_task = {
@@ -27,8 +29,8 @@ const reducer = (state: TaskState, action: Action): TaskState => {
         description: "...",
         done: false,
       };
-      
-      console.log(state)
+
+      console.log(state);
       return { tasks: [new_task, ...state.tasks] };
     }
     case ActionType.Changed: {

@@ -1,0 +1,16 @@
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    & div {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-self: center;
+        width: 50%;
+        height: 50%;
+        border: solid 0.150rem #989898;
+        border-radius: 1rem;
+        padding: 2%;
+        margin-top: 5%;
+    }
+}
