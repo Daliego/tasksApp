@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   CreateDateColumn,
   DataSource,
@@ -14,7 +15,7 @@ import { EnumStatus } from "../enum/enumStatus";
 import { User } from "./User";
 
 @Entity()
-export class Task {
+export class Task  extends BaseEntity{
   @PrimaryGeneratedColumn()
   id: string;
   @Column()

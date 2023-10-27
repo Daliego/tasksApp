@@ -16,10 +16,6 @@ import { User } from "../../domain/entity/User";
 import { Console } from "console";
 import { EnumStatus } from "../../domain/enum/enumStatus";
 
-const ds = AppDataSource;
-const taskRepository = ds.getRepository(Task);
-const userReopoitory = ds.getRepository(User);
-
 export class TaskController {
   async getAllTasks(req: Request, res: Response) {
     const query = req.query;
@@ -36,7 +32,7 @@ export class TaskController {
     if (orderBy.match(",")) {
       const [name, done_enum] = orderBy.split(",");
 
-      tasks = await taskRepository.find({
+      tasks = await Task.find({
         where: {
           status: done,
         },
@@ -46,7 +42,7 @@ export class TaskController {
         },
       });
     } else {
-        tasks = await taskRepository.find({
+        tasks = await Task.find({
             where: {
                 status: done,
             },
@@ -69,7 +65,7 @@ export class TaskController {
       abortEarly: false,
     });
 
-    const task = await taskRepository.findOneBy({ id });
+    const task = await Task.findOneBy({ id });
 
     if (!task) {
       throw new Error("Task not found");
@@ -86,7 +82,7 @@ export class TaskController {
       abortEarly: false,
     });
 
-    await taskRepository.save(task);
+    await Task.save(task);
 
     res.json(task);
   }
@@ -99,7 +95,7 @@ export class TaskController {
       abortEarly: false,
     });
 
-    await taskRepository.delete({ id });
+    await Task.delete({ id });
 
     res.json({ message: `The task with id: ${id} were deleted` });
   }
